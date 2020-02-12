@@ -8,9 +8,11 @@ this extensions contain some small DIY utils.
 
 scroll up and down in the text editor
 
-> **commands**:  
-> miscutils.scrolldown: scroll down *scrollnum* lines.  
-> miscutils.scrollup: scroll up *scrollnum* lines.
+* commands:
 
-> **configuration**:  
-> miscutils.scrollnum: line nums to scroll.
+> miscutils.scrolldown: scroll down *scrollnum* lines.  
+> miscutils.scrollup: scroll up *scrollnum* lines.  
+  
+* configuration:
+
+> miscutils.scrollnum: line nums to scroll.  

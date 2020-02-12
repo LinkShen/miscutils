@@ -15,6 +15,17 @@
 				"kind": "build",
 				"isDefault": true
 			}
+		},
+		{
+			"type": "shell",
+			"label": "package",
+			"command": "vsce",
+			"args": ["package"],
+			"options": {
+				"cwd": "${workspaceFolder}"
+			},
+			"problemMatcher": "$tsc",
+			"group": "build"
 		}
 	]
 }

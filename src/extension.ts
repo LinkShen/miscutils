@@ -36,8 +36,8 @@ export function activate(context: vscode.ExtensionContext) {
 	context.subscriptions.push(vscode.commands.registerCommand('miscutils.scrolldown', () => {
 		scroll(scrollnum);
 	}));
-	context.subscriptions.push(vscode.commands.registerCommand('miscutils.scrolldown', () => {
-		scroll(scrollnum);
+	context.subscriptions.push(vscode.commands.registerCommand('miscutils.scrollup', () => {
+		scroll(-scrollnum);
 	}));
 }
 
