@@ -24,7 +24,7 @@ function scroll(line: number) {
     let moveToCharactor = activeTextEditor.document.lineAt(moveToLine).firstNonWhitespaceCharacterIndex;
     let newPosition = new vscode.Position(moveToLine, moveToCharactor);
     activeTextEditor.selection = new vscode.Selection(newPosition, newPosition);
-    activeTextEditor.revealRange(activeTextEditor.selection, vscode.TextEditorRevealType.InCenter);
+    activeTextEditor.revealRange(activeTextEditor.selection, vscode.TextEditorRevealType.Default);
 }
 
 // this method is called when your extension is activated
