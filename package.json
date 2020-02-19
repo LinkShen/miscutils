@@ -15,8 +15,7 @@
 		"Other"
 	],
 	"activationEvents": [
-		"onCommand:miscutils.scrolldown",
-		"onCommand:miscutils.scrollup"
+		"*"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
@@ -39,6 +38,11 @@
 			{
 				"command": "miscutils.scrollup",
 				"title": "scrollup",
+				"category": "miscutils"
+			},
+			{
+				"command": "miscutils.alternatefile",
+				"title": "alternatefile",
 				"category": "miscutils"
 			}
 		]

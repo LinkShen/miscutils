@@ -1,6 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
+import * as alternatefile from './alternatefile';
 
 // config
 let scrollnum = 10;
@@ -38,7 +39,9 @@ export function activate(context: vscode.ExtensionContext) {
 	}));
 	context.subscriptions.push(vscode.commands.registerCommand('miscutils.scrollup', () => {
 		scroll(-scrollnum);
-	}));
+    }));
+
+    alternatefile.init(context);
 }
 
 // this method is called when your extension is deactivated
