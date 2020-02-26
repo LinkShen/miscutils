@@ -10,12 +10,16 @@ function loadConfig()
 	scrollnum = vscode.workspace.getConfiguration("miscutils").get<number>("scrollnum", 10);
 }
 
-function scroll(line: number) {
+function scroll(line : number) {
 	let activeTextEditor = vscode.window.activeTextEditor;
-	if (!activeTextEditor) return;
-	let currentPosition = activeTextEditor.selection.active;
-    let moveToLine = currentPosition.line + line;
+    if (!activeTextEditor) return;
+    
+    let startPos = activeTextEditor.visibleRanges[0].start;
+    let endPos = activeTextEditor.visibleRanges[0].end;
+    let currentPosition = activeTextEditor.selection.active;
+    
     let documentLineCount = activeTextEditor.document.lineCount;
+    let moveToLine = currentPosition.line + line;
     if (moveToLine > documentLineCount - 1) {
         moveToLine = documentLineCount - 1;
     }
@@ -25,7 +29,27 @@ function scroll(line: number) {
     let moveToCharactor = activeTextEditor.document.lineAt(moveToLine).firstNonWhitespaceCharacterIndex;
     let newPosition = new vscode.Position(moveToLine, moveToCharactor);
     activeTextEditor.selection = new vscode.Selection(newPosition, newPosition);
-    activeTextEditor.revealRange(activeTextEditor.selection, vscode.TextEditorRevealType.Default);
+    if (currentPosition.line < startPos.line || currentPosition.line > endPos.line)
+    {
+        activeTextEditor.revealRange(activeTextEditor.selection, vscode.TextEditorRevealType.Default);
+        return;
+    }
+
+    let curTotalLen = endPos.line - startPos.line;
+    let newEndLine = endPos.line + line;
+    let topLine = startPos.line + line;
+    if (newEndLine > documentLineCount - 1)
+    {
+        topLine = documentLineCount - 1 - curTotalLen;
+    }
+    if (topLine > documentLineCount - 1) {
+        topLine = documentLineCount - 1;
+    }
+    if (topLine < 0) {
+        topLine = 0;
+    }
+    let topPostion = new vscode.Position(topLine, 0);
+    activeTextEditor.revealRange(new vscode.Selection(topPostion, topPostion), vscode.TextEditorRevealType.AtTop);
 }
 
 // this method is called when your extension is activated
