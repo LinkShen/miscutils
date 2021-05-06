@@ -19,16 +19,6 @@
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"configuration": {
-			"title": "miscutils",
-			"properties": {
-				"miscutils.scrollnum": {
-					"type": "number",
-					"default": 10,
-					"description": "line number to scroll."
-				}
-			}
-		},
 		"viewsContainers": {
 			"activitybar": [
 				{
@@ -68,16 +58,6 @@
 			]
 		},
 		"commands": [
-			{
-				"command": "miscutils.scrolldown",
-				"title": "scrolldown",
-				"category": "miscutils"
-			},
-			{
-				"command": "miscutils.scrollup",
-				"title": "scrollup",
-				"category": "miscutils"
-			},
 			{
 				"command": "miscutils.codetree.addNode",
 				"title": "Add Node",
