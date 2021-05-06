@@ -15,11 +15,11 @@
 		"Other"
 	],
 	"activationEvents": [
-		"*"
+		"onView:codetree"
 	],
 	"main": "./out/extension.js",
 	"contributes": {
-		"configuration":{
+		"configuration": {
 			"title": "miscutils",
 			"properties": {
 				"miscutils.scrollnum": {
@@ -28,6 +28,44 @@
 					"description": "line number to scroll."
 				}
 			}
+		},
+		"viewsContainers": {
+			"activitybar": [
+				{
+					"id": "miscutils",
+					"title": "Misc Utils",
+					"icon": "media/dep.svg"
+				}
+			]
+		},
+		"views": {
+			"miscutils": [
+				{
+					"id": "codetree",
+					"name": "Code Tree"
+				}
+			]
+		},
+		"menus": {
+			"view/title": [
+				{
+					"command": "miscutils.codetree.addNode",
+					"when": "view == codetree",
+					"group": "navigation"
+				}
+			],
+			"view/item/context": [
+				{
+					"command": "miscutils.codetree.addNode",
+					"when": "view == codetree",
+					"group": "inline"
+				},
+				{
+					"command": "miscutils.codetree.delNode",
+					"when": "view == codetree",
+					"group": "inline"
+				}
+			]
 		},
 		"commands": [
 			{
@@ -41,9 +79,16 @@
 				"category": "miscutils"
 			},
 			{
-				"command": "miscutils.alternatefile",
-				"title": "alternatefile",
-				"category": "miscutils"
+				"command": "miscutils.codetree.addNode",
+				"title": "Add Node",
+				"icon":{"dark": "resources/add.svg","light": "resources/add.svg"},
+				"category": "miscutils.codetree"
+			},
+			{
+				"command": "miscutils.codetree.delNode",
+				"title": "Del Node",
+				"icon":{"dark": "resources/del.svg","light": "resources/del.svg"},
+				"category": "miscutils.codetree"
 			}
 		]
 	},
@@ -60,9 +105,9 @@
 		"@types/mocha": "^7.0.1",
 		"@types/node": "^12.11.7",
 		"@types/vscode": "^1.42.0",
-		"eslint": "^6.8.0",
-		"@typescript-eslint/parser": "^2.18.0",
 		"@typescript-eslint/eslint-plugin": "^2.18.0",
+		"@typescript-eslint/parser": "^2.18.0",
+		"eslint": "^6.8.0",
 		"glob": "^7.1.6",
 		"mocha": "^7.0.1",
 		"typescript": "^3.7.5",

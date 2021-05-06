@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
-import * as alternatefile from './alternatefile';
+import * as codetree from './codetree';
 
 // config
 let scrollnum = 10;
@@ -12,7 +12,7 @@ function loadConfig()
 
 function scroll(line : number) {
 	let activeTextEditor = vscode.window.activeTextEditor;
-    if (!activeTextEditor) return;
+    if (!activeTextEditor) {return;}
     
     let startPos = activeTextEditor.visibleRanges[0].start;
     let endPos = activeTextEditor.visibleRanges[0].end;
@@ -65,7 +65,7 @@ export function activate(context: vscode.ExtensionContext) {
 		scroll(-scrollnum);
     }));
 
-    alternatefile.init(context);
+    codetree.init();
 }
 
 // this method is called when your extension is deactivated
